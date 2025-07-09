@@ -27,7 +27,7 @@ def run_python_file(working_directory, file_path, args=None):
             cwd=abs_working_directory, 
             text=True,
         )
-        
+
         output = ""
         if result.stdout:
             output += f"STDOUT:\n{result.stdout}\n"
