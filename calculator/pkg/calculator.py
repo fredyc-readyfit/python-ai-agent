@@ -1,5 +1,7 @@
 # calculator.py
 
+import re
+
 class Calculator:
     def __init__(self):
         self.operators = {
@@ -18,6 +20,10 @@ class Calculator:
     def evaluate(self, expression):
         if not expression or expression.isspace():
             return None
+
+        # Add spaces around operators if they are not already present
+        expression = re.sub(r'([+\-*/])', r' \g<1> ', expression)
+        expression = ' '.join(expression.split())  # Remove extra spaces
         tokens = expression.strip().split()
         return self._evaluate_infix(tokens)
 
